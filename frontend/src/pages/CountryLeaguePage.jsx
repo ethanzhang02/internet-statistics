@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import axios from "axios";
 import CountryPieChart from "../components/CountryPieChart";
 import CountryLeagueTable from "../components/CountryLeagueTable";
-import { Box, Container, Grid2, Paper, Typography } from "@mui/material";
+import { Grid2, Paper, Typography } from "@mui/material";
 
 
 const API_KEY = import.meta.env.VITE_API_KEY;

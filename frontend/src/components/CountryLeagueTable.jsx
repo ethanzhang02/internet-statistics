@@ -17,17 +17,17 @@ const CountryLeagueTable = ({leagueTable}) => {
 	return (
 		<div style={{ height: '600px', overflow: 'auto'}}>
 			<DataGrid 
-			rows={rows} 
-			columns={columns} 
-			initialState={{
-				pagination: {
-			  		paginationModel: {
-						pageSize: 10,
-					},
-			  	},
-			}}
-			pageSizeOptions={[10, 25, 50, { value: -1, label: 'All' }]}
-		/>
+				rows={rows} 
+				columns={columns} 
+				initialState={{
+					pagination: {
+				  		paginationModel: {
+							pageSize: 10,
+						},
+				  	},
+				}}
+				pageSizeOptions={[10, 25, 50, { value: -1, label: 'All' }]}
+			/>
 		</div>
 		
 	)
