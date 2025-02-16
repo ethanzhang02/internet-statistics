@@ -1,4 +1,3 @@
-require('dotenv').config({ path: '../.env' }); // Load environment variables from .env file
 const mysql = require('mysql2'); // Use mysql2 instead of mysql
 
 // Create a connection to the MySQL database

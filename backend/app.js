@@ -1,5 +1,6 @@
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const morgan = require('morgan');
 const db = require('./db');
 const apiKeyAuth = require('./authMiddleware');
@@ -7,6 +8,7 @@ const apiKeyAuth = require('./authMiddleware');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(apiKeyAuth);
@@ -57,6 +59,23 @@ app.get('/api/statistics/:country_code', (req, res) => {
       return;
     }
     res.json(results[0]);
+  });
+});
+
+app.get('/api/countries/wb-rates', (req, res) => {
+  const query = `
+  SELECT c.country_code, c.country_name, wb.year AS wb_year, wb.rate AS wb_rate
+  FROM countries c
+  LEFT JOIN wb_rates wb ON c.country_code = wb.country_code
+  ORDER BY wb.rate DESC
+  `;
+  db.query(query, (err, results) => {
+    if (err) {
+      console.error('Error fetching WB rates:', err);
+      res.status(500).json({ error: 'Failed to fetch WB rates' });
+      return;
+    }
+    res.json(results);
   });
 });
 

@@ -19,7 +19,6 @@ describe('GET /api/countries', () => {
 
     // Make the request
     const response = (await request(app).get('/api/countries'));
-	console.log(response.body);
 
     // Test the response status
     expect(response.statusCode).toBe(200);
@@ -123,5 +122,49 @@ describe('GET /api/statistics/:country_code', () => {
 
     // Test the error message
     expect(response.body).toEqual({ error: 'Failed to fetch country' });
+  });
+});
+
+describe('GET /api/countries/wb-rates', () => {
+  it('should return all wb rates for all countries in order with status 200', async () => {
+    // Mock the database query
+    db.query.mockImplementation((query, callback) => {
+      callback(null, [{ 
+        country_code: 'US', 
+        country_name: 'United States',
+        wb_year: 2022,
+        wb_rate: 85.5, 
+      }]);
+    });
+
+    // Make the request
+    const response = (await request(app).get('/api/countries/wb-rates'));
+
+    // Test the response status
+    expect(response.statusCode).toBe(200);
+
+    // Test the response data
+    expect(response.body).toEqual([{ 
+      country_code: 'US', 
+      country_name: 'United States',
+      wb_year: 2022,
+      wb_rate: 85.5, 
+    }]);
+  });
+
+  it('should return 500 if the database query fails', async () => {
+    // Mock a database error
+    db.query.mockImplementation((query, callback) => {
+      callback(new Error('Database error'), null);
+    });
+
+    // Make the request
+    const response = (await request(app).get('/api/countries/wb-rates'));
+
+    // Test the response status
+    expect(response.statusCode).toBe(500);
+
+    // Test the error message
+    expect(response.body).toEqual({ error: 'Failed to fetch WB rates' });
   });
 });
