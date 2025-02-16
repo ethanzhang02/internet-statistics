@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import axios from "axios";
 import CountryPieChart from "../components/CountryPieChart";
 import CountryLeagueTable from "../components/CountryLeagueTable";
-import { Grid2, Paper, Typography } from "@mui/material";
+import { Box, Container, Grid2, Paper, Typography } from "@mui/material";
 
 
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -39,9 +39,9 @@ const CountryLeaguePage = () => {
 	return (
 		<div>
 			<h1>Country League Statistics</h1>
-		  	<Grid2 container spacing={1}>
+		  	<Grid2 container spacing={2}>
 			{/* Pie Chart Section */}
-				<Grid2 xs={12} md={6}>
+				<Grid2 size={{ xs: 12, md: 12}}>
 			  		<Paper style={{ padding: "16px" }}>
 						<Typography variant="h6">Top 10 Countries by WB Rate</Typography>
 						<CountryPieChart topCountries={topCountries} />
@@ -49,7 +49,7 @@ const CountryLeaguePage = () => {
 				</Grid2>
 	
 			{/* Table Section */}
-				<Grid2 xs={12} md={6}>
+				<Grid2 size={{ xs: 12, md: 12}}>
 			  		<Paper style={{ padding: "16px" }}>
 						<Typography variant="h6">Country League Table</Typography>
 						<CountryLeagueTable leagueTable={leagueTable} />
@@ -57,7 +57,7 @@ const CountryLeaguePage = () => {
 				</Grid2>
 		  	</Grid2>
 		</div>
-	  );
+	);
 };
 
 export default CountryLeaguePage;

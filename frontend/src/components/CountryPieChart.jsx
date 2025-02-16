@@ -9,8 +9,7 @@ const CountryPieChart = ({ topCountries }) => {
 
 	return (
 		<PieChart series={[{ data: data }]}
-			width = {400}
-			height = {400}
+			height = {300}
 		/>
 	);
 }
