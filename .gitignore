@@ -1,0 +1,17 @@
+# Ignore .env files
+.env
+
+# Node.js dependencies
+node_modules/
+
+# Vite build output
+dist/
+
+# Venv
+quantum/
+
+# IDE files
+.vscode/
+
+# Logs
+*.log
