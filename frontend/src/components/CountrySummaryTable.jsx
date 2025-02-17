@@ -7,7 +7,7 @@ const BASE_URL = "http://localhost:3000/api";
 
 const CountrySummaryTable = ({ countryCode }) => {
     const [countryData, setCountryData] = useState([]);
-    const [editedData, setEditedData] = useState([]);
+    const [editedData, setEditedData] = useState({wb_rate: ""});
 
     useEffect(() => {
         if (!countryCode) return;
@@ -59,7 +59,7 @@ const CountrySummaryTable = ({ countryCode }) => {
 
             // Update country data with the latest response (with updated year)
             setCountryData(updatedResponse.data);
-			
+
             alert("Update successful!");
         } catch (error) {
             console.error("Update failed:", error);

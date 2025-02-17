@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Box, InputLabel, MenuItem, FormControl, Select } from "@mui/material";
+import { Box, InputLabel, MenuItem, FormControl, Select, Paper } from "@mui/material";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = "http://localhost:3000/api";
@@ -33,7 +33,8 @@ const CountrySelect = ({ countryCode, setCountryCode }) => {
 	};
 
 	return (
-		<Box sx={{ minWidth: 120 }}>
+		<Box sx={{ minWidth: 120 }} backgroundColor="white">
+			<Paper style={{ padding: "16px" }}>
       		<FormControl fullWidth>
         		<InputLabel id="country-select-label">Country</InputLabel>
         		<Select
@@ -49,6 +50,7 @@ const CountrySelect = ({ countryCode, setCountryCode }) => {
 					))}
         		</Select>
       		</FormControl>
+			</Paper>
     	</Box>
 	)
 }
