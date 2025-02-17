@@ -79,6 +79,34 @@ app.get('/api/countries/wb-rates', (req, res) => {
   });
 });
 
+app.put('/api/update/:country_code', (req, res) => {
+  const { wb_rate, wb_year } = req.body;
+  const country_code = req.params.country_code;
+
+  if (!country_code || country_code.length !== 2) {
+    res.status(400).json({ error: 'Invalid country code' });
+    return;
+  }
+  
+  if (!wb_rate || isNaN(wb_rate) || wb_rate < 0 || wb_rate > 100) {
+    return res.status(400).json({ error: 'Invalid WB Rate. It must be a number between 0 and 100.' });
+  }
+
+  if (!wb_year || isNaN(wb_year)) {
+    return res.status(400).json({ error: 'Invalid WB Year. It must be a valid year.' });
+  }
+
+  const query = 'INSERT INTO wb_rates (country_code, year, rate) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE year = ?, rate = ?';
+  db.query(query, [country_code, wb_year, wb_rate, wb_year, wb_rate], (err, results) => {
+    if (err) {
+      console.error('Error updating rate:', err);
+      res.status(500).json({ error: 'Failed to update rate' });
+      return;
+    }
+    res.json({ message: 'Rate updated' });
+  });
+});
+
 
 // ✅ Export `app` for testing
 module.exports = app;

@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import axios from "axios";
 import CountryPieChart from "../components/CountryPieChart";
 import CountryLeagueTable from "../components/CountryLeagueTable";
-import { Grid2, Paper, Typography } from "@mui/material";
+import { Box, Grid2, Paper, Typography } from "@mui/material";
 
 
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -44,7 +44,9 @@ const CountryLeaguePage = () => {
 				<Grid2 size={{ xs: 12, md: 12}}>
 			  		<Paper style={{ padding: "16px" }}>
 						<Typography variant="h6">Top 10 Countries by WB Rate</Typography>
+						<Box>
 						<CountryPieChart topCountries={topCountries} />
+						</Box>
 			  		</Paper>
 				</Grid2>
 	
