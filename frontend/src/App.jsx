@@ -20,7 +20,13 @@ function App() {
 }
 
 function Home() {
-  return <h1>Home Page</h1>;
+  return (
+    <div>
+      <h1>Welcome!</h1>
+      <h3>Click on the links above to view the Country Summary or League Table</h3>
+    </div>
+    
+  );
 }
 
 export default App;

@@ -39,7 +39,7 @@ const CountryLeaguePage = () => {
 	return (
 		<div>
 			<h1>Country League Statistics</h1>
-		  	<Grid2 container spacing={2}>
+		  	<Grid2 size={{ xs: 12, md: 12}} container spacing={2}>
 			{/* Pie Chart Section */}
 				<Grid2 size={{ xs: 12, md: 12}}>
 			  		<Paper style={{ padding: "16px" }}>

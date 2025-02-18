@@ -24,10 +24,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   flex-direction: column; /* Stack elements vertically */
   align-items: flex-start; /* Align items to the top of the container */
-  min-width: 320px;
   min-height: 100vh;
 }
 
