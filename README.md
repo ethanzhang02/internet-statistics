@@ -6,14 +6,14 @@ A full-stack web application that visualizes internet statistics by country. Bui
 ## Tech Stack
 
 ### Frontend:
-React – UI components
-Material UI (MUI) – UI framework for responsive design
-Axios – To fetch data from backend APIs
+- React – UI components
+- Material UI (MUI) – UI framework for responsive design
+- Axios – To fetch data from backend APIs
 
 ### Backend:
-Express/Node.js – Server-side application
-MySQL – Database for storing statistics
-Jest/Supertest – For unit testing the API endpoints
+- Express/Node.js – Server-side application
+- MySQL – Database for storing statistics
+ -Jest/Supertest – For unit testing the API endpoints
 
 ### Containerization (WIP):
-Docker – To containerize the app and streamline development
+- Docker – To containerize the app and streamline development
