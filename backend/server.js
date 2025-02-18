@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(apiKeyAuth);
 
 app.get('/api/countries', (req, res) => {
-  const query = 'SELECT * FROM countries';
+  const query = 'SELECT * FROM countries ORDER BY country_name';
   db.query(query, (err, results) => {
     if (err) {
       console.error('Error fetching countries:', err);

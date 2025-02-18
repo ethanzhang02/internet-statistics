@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TextField, Button } from "@mui/material";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
-const BASE_URL = "http://localhost:3000/api";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const CountrySummaryTable = ({ countryCode }) => {
     const [countryData, setCountryData] = useState([]);
@@ -14,7 +14,7 @@ const CountrySummaryTable = ({ countryCode }) => {
 
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${BASE_URL}/statistics/${countryCode}`, {
+                const response = await axios.get(`${API_URL}/statistics/${countryCode}`, {
                     headers: { "x-api-key": API_KEY },
                 });
 
@@ -46,14 +46,14 @@ const CountrySummaryTable = ({ countryCode }) => {
         }
 
         try {
-            await axios.put(`${BASE_URL}/update/${countryCode}`, {
+            await axios.put(`${API_URL}/update/${countryCode}`, {
                 wb_rate: editedData.wb_rate,
                 wb_year: new Date().getFullYear(),
             }, {
                 headers: { "x-api-key": API_KEY }
             });
 			
-			const updatedResponse = await axios.get(`${BASE_URL}/statistics/${countryCode}`, {
+			const updatedResponse = await axios.get(`${API_URL}/statistics/${countryCode}`, {
                 headers: { "x-api-key": API_KEY }
             });
 

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Box, InputLabel, MenuItem, FormControl, Select, Paper } from "@mui/material";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
-const BASE_URL = "http://localhost:3000/api";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const CountrySelect = ({ countryCode, setCountryCode }) => {
 	const [countries, setCountries] = useState([]);
@@ -11,7 +11,7 @@ const CountrySelect = ({ countryCode, setCountryCode }) => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get(`${BASE_URL}/countries`, {
+				const response = await axios.get(`${API_URL}/countries`, {
 					headers: {
 						"x-api-key": API_KEY,
 					},

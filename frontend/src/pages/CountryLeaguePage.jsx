@@ -6,7 +6,7 @@ import { Box, Grid2, Paper, Typography } from "@mui/material";
 
 
 const API_KEY = import.meta.env.VITE_API_KEY;
-const BASE_URL = "http://localhost:3000/api";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const CountryLeaguePage = () => {
 	const [leagueTable, setLeagueTable] = useState([]);
@@ -15,7 +15,7 @@ const CountryLeaguePage = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get(`${BASE_URL}/countries/wb-rates`, {
+				const response = await axios.get(`${API_URL}/countries/wb-rates`, {
 					headers: {
 						"x-api-key": API_KEY,
 					},
