@@ -13,7 +13,7 @@ A full-stack web application that visualizes internet statistics by country. Bui
 ### Backend:
 - Express/Node.js – Server-side application
 - MySQL – Database for storing statistics
- -Jest/Supertest – For unit testing the API endpoints
+- Jest/Supertest – For unit testing the API endpoints
 
 ### Containerization (WIP):
 - Docker – To containerize the app and streamline development
